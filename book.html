@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Задания по книге</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet">
+    <style>
+        body { font-family: Arial; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .code-block { background: #f5f5f5; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        .download-section { margin: 30px 0; }
+    </style>
+</head>
+<body>
+
+<h1>Задание #1. Игра в числа</h1>
+<h2>Цели</h2>
+<p>Написать программу, которая не принимает аргументы, но может давать подсказки</p>
+<h2>Задачи</h2>
+<p> 1. Написать функцию (guessing_game), которая не при
+нимает аргументы.
+ 2. При вызове функция выбирает случайное целое число от 0
+ до 100 (включительно).
+ 3. Функция должна попросить пользователя угадать, какое число было
+ выбрано.
+ 4. Каждый раз, когда пользователь будет вводить значение,
+ программа будет показывать одно из следующих сообще
+ний:
+ — Слишком большое
+ — Слишком маленькое
+ — То, что нужно
+</p>
+<h2>Инструменты и алгоритмы</h2>
+<p>В основе этой программы лежит простое применение опера
+торов сравнения ((==, < и >) и модуль random
+для генерации случайного числа. После импортирования random
+мы можем вызвать random.randint, которая принимает два па
+раметра и возвращает случайное целое число. </p>
+<h2>Ошибки и их исправления </h2>
+<h2>Выводы</h2>
+<h3>Задание</h3>
+<p>Написать программу, которая анализирует данные из CSV-файла...</p>
+
+<h3>Решение</h3>
+<div class="code-block">
+<pre><code class="language-python">
+import pandas as pd
+
+data = pd.read_csv('data.csv')
+print(data.describe())
+</code></pre>
+</div>
+
+<div class="download-section">
+    <h3>Файлы для скачивания</h3>
+    <ul>
+        <li><a href="lab1.py" download>Исходный код (lab1.py)</a></li>
+    </ul>
+</div>
+
+<!-- Подключение скриптов для подсветки кода -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+
+</body>
+</html>
