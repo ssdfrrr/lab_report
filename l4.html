@@ -1,0 +1,106 @@
+<html>
+<head>
+    <title> Лабораторная работа №4</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet">
+    <style>
+        body { font-family: Arial; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .code-block { background: #f5f5f5; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        .download-section { margin: 30px 0; }
+    </style>
+</head>
+<body>
+<nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="l1.html"></a>Лабораторная №1</li>
+                <li><a href="l2.html"></a>Лабораторная №2</li>
+                <li><a href="l4.html"></a>Лабораторная №4</li>
+            </ul>
+        </nav>
+<h1>Вариант 2. Вычисление CG-состава </h1>
+<h2>Цели</h2>
+<p>1. Разработать программу для чтения биологических последовательностей из файла в формате GenBank.  </p>
+<p>2. Реализовать расчёт GC-состава (процентного содержания гуанина (G) и цитозина (C)) для каждой последовательности. </p>
+<p>3. Отсортировать последовательности по возрастанию GC-состава и сохранить результаты в удобном формате.  </p>
+<h2>Задачи</h2>
+<p> 1. Чтение данных </p>
+<p> 2. Расчёт GC-состава </p>
+<p> 3. Сортировка и сохранение результатов </p>
+<p> 4. Обработка ошибок </p>
+
+
+
+
+<h2>Инструменты и алгоритмы</h2>
+<p>Язык программирования: Python </p>
+<p>Библиотеки: Bio.SeqIO для чтения GenBank файлов, Bio.SeqUtils для расчёта GC-состава</p>
+<h2> Алгоритм </h2>
+1. Чтение файла
+2. Расчёт GC-состава
+3. Сортировка
+4. Сохранение результатов
+<h2>Ошибки и их исправления </h2>
+<p>Некорректный формат файла: ошибка ValueError при чтении файла. Причина: файл повреждён или имеет нестандартную структуру.
+    Решение: проверка существования файла перед обработкой:  </p>
+<p>Последовательности сортируются некорректно, т.к. некоторые значения GC-состава равны 0.0. Решение: фильтрация записей перед сортировкой:  </p>
+<h2>Выводы</h2>
+<p> Программа как-то обрабатывает GenBank файлы, однако я не уверена в корректности работы программы. Требуется обработка довольно большого 
+количества исключений во избежание ошибок</p>
+
+<h3>Решение</h3>
+<div class="code-block">
+<pre><code class="language-python">
+from Bio import SeqIO
+from Bio.SeqUtils import gc_fraction
+from Bio.Seq import UndefinedSequenceError
+
+
+def calculate_gc_content(record):
+    """Вычисляет GC-состав с обработкой ошибок"""
+    try:
+        if not hasattr(record, 'seq') or record.seq is None:
+            return 0.0
+        return gc_fraction(record.seq) * 100
+    except UndefinedSequenceError:
+        return 0.0
+
+
+def process_genbank_file(input_file, output_file):
+    """Обрабатывает GenBank файл и сохраняет результаты"""
+    try:
+        # Чтение и фильтрация записей
+        records = list(SeqIO.parse(input_file, "genbank"))
+        valid_records = [r for r in records if hasattr(r, 'seq') and r.seq is not None]
+
+        if not valid_records:
+            print("Нет валидных последовательностей для анализа!")
+            return
+
+        # Сортировка и сохранение
+        sorted_records = sorted(valid_records, key=calculate_gc_content)
+        with open(output_file, "w") as f:
+            for record in sorted_records:
+                gc = calculate_gc_content(record)
+                f.write(f">{record.id}|GC={gc:.2f}%\n{record.seq}\n\n")
+
+        print(f"Готово! Обработано {len(sorted_records)} последовательностей.")
+
+    except Exception as e:
+        print(f"Ошибка: {e}")
+
+
+# Пример использования
+process_genbank_file("C:/Users/lalin/Downloads/sequence.gb", "output.txt")
+</code></pre>
+</div>
+<div class="download-section">
+    <h3>Сcылки на GitHub</h3>
+    <ul>
+        <li><a href="https://github.com/ssdfrrr/lab_report/blob/L4.py" download>Исходный код (l4.py)</a></li>
+
+<!-- Подключение скриптов для подсветки кода -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+
+</body>
+</html>
