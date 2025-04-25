@@ -1,38 +1,41 @@
-from Bio import Entrez, SeqIO
-import os
+from Bio import SeqIO
+from Bio.SeqUtils import gc_fraction
+from Bio.Seq import UndefinedSequenceError
 
 
-Entrez.email = " "
+def calculate_gc_content(record):
+    """Вычисляет GC-состав с обработкой ошибок"""
+    try:
+        if not hasattr(record, 'seq') or record.seq is None:
+            return 0.0
+        return gc_fraction(record.seq) * 100
+    except UndefinedSequenceError:
+        return 0.0
 
 
+def process_genbank_file(input_file, output_file):
+    """Обрабатывает GenBank файл и сохраняет результаты"""
+    try:
+        # Чтение и фильтрация записей
+        records = list(SeqIO.parse(input_file, "genbank"))
+        valid_records = [r for r in records if hasattr(r, 'seq') and r.seq is not None]
 
-def download_genbank_records(species, num_records=5):
-    handle = Entrez.esearch(db="nucleotide", term=f"{species}[Organism] AND complete cds", retmax=num_records)
-    record = Entrez.read(handle)
-    handle.close()
+        if not valid_records:
+            print("Нет валидных последовательностей для анализа!")
+            return
 
-    if not record["IdList"]:
-        print(f"Не найдено записей для вида: {species}")
-        return []
+        # Сортировка и сохранение
+        sorted_records = sorted(valid_records, key=calculate_gc_content)
+        with open(output_file, "w") as f:
+            for record in sorted_records:
+                gc = calculate_gc_content(record)
+                f.write(f">{record.id}|GC={gc:.2f}%\n{record.seq}\n\n")
 
+        print(f"Готово! Обработано {len(sorted_records)} последовательностей.")
 
-    handle = Entrez.efetch(db="nucleotide", id=record["IdList"], rettype="gb", retmode="text")
-    records = list(SeqIO.parse(handle, "genbank"))
-    handle.close()
-
-    return records
-
-
-
-betula_records = download_genbank_records("Betula platyphylla")
-bacteria_records = download_genbank_records("Candidatus Versatilivorator vitaminiformans")
-
-
-all_records = betula_records + bacteria_records
+    except Exception as e:
+        print(f"Ошибка: {e}")
 
 
-output_file = "combined_records.gb"
-with open(output_file, "w") as f:
-    SeqIO.write(all_records, f, "genbank")
-
-print(f"Создан файл {output_file} с {len(all_records)} записями")
+# Пример использования
+process_genbank_file("C:/Users/lalin/Downloads/sequence.gb", "output.txt")
