@@ -45,6 +45,16 @@ header h1 {
                      0 0 20px var(--sunshine); }
 }
 
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.nav-button {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
 header h2 {
   margin: 0.5rem 0 0;
   font-size: 1.2rem;
