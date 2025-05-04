@@ -11,7 +11,7 @@
 /* Базовые стили */
 body {
     background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
-                url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') fixed;
+                url('https://yandex.by/images/search?from=tabbar&img_url=https%3A%2F%2Fcs.pikabu.ru%2Fpost_img%2Fbig%2F2013%2F08%2F08%2F10%2F1375980124_1377292218.jpg&lr=157&pos=11&rpt=simage&text=%D0%BA%D0%B0%D0%BA%D0%BE%D0%B9-%D0%BD%D0%B8%D0%B1%D1%83%D0%B4%D1%8C%20%D1%84%D0%BE%D0%BD') fixed;
     background-size: cover;
     background-attachment: fixed;
   font-family: 'Segoe UI', 'Roboto', sans-serif;
