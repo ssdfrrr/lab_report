@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="styles.css">
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -15,145 +14,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Отчёты по лабораторным работам</title>
-    <style>
-        :root {
-            --primary: #4361ee;
-            --primary-dark: #3a0ca3;
-            --accent: #f72585;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        
-        header {
-            background: linear-gradient(to right, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        header h1 {
-            margin: 0;
-            font-size: 2.2rem;
-            font-weight: 700;
-        }
-        
-        header h2 {
-            margin: 0.5rem 0 0;
-            font-size: 1.2rem;
-            font-weight: 400;
-            opacity: 0.9;
-        }
-        
-        main {
-            flex: 1;
-            padding: 2rem 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-        }
-        
-        .nav-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            width: 100%;
-            max-width: 1200px;
-        }
-        
-        .nav-button {
-            background: white;
-            color: var(--primary);
-            text-decoration: none;
-            padding: 1.5rem;
-            text-align: center;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border: 2px solid var(--primary);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100px;
-        }
-        
-        .nav-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            background: var(--primary);
-            color: white;
-        }
-        
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 1.5rem;
-            font-size: 0.9rem;
-            margin-top: auto;
-        }
-        
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-            
-            .nav-buttons {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Анимация для кнопок */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .nav-button {
-            animation: fadeIn 0.5s ease-out forwards;
-        }
-        
-        .
-
-Гнутый танк, [04.05.2025 13:43]
-nav-button:nth-child(1) { animation-delay: 0.1s; }
-        .nav-button:nth-child(2) { animation-delay: 0.2s; }
-        .nav-button:nth-child(3) { animation-delay: 0.3s; }
-        .nav-button:nth-child(4) { animation-delay: 0.4s; }
-        .nav-button:nth-child(5) { animation-delay: 0.5s; }
-        .nav-button:nth-child(6) { animation-delay: 0.6s; }
-    </style>
+    <link rel="stylesheet" href="style.css"> <!-- Важно: должен быть в head -->
 </head>
 <body>
     <header>
-        <h1>Отчёты по лабораторным работам</h1>
-        <h2>Выберите работу, которая вас интересует</h2>
+        <h1>Отчеты по лабораторным бесплатно без смс и регистрации</h1>
+        <h2>Выберите работу, которая интересует</h2>
     </header>
 
     <main>
         <div class="nav-buttons">
-            <a href="index.html" class="nav-button">Главная</a>
-            <a href="l1.html" class="nav-button">Лабораторная работа 1</a>
-            <a href="l2.html" class="nav-button">Лабораторная работа 2</a>
-            <a href="multifasta.html" class="nav-button">Парсинг файлов формата мульти-фаста</a>
-            <a href="l3.html" class="nav-button">Лабораторная работа 3</a>
-            <a href="l4.html" class="nav-button">Лабораторная работа 4</a>
+            <a href="index.html" class="nav-button">🏠 Главная</a>
+            <a href="l1.html" class="nav-button">🔬 Лабораторная 1</a>
+            <a href="l2.html" class="nav-button">🧪 Лабораторная 2</a>
+            <a href="multifasta.html" class="nav-button">📊 Парсинг файлов формата мульти-фаста</a>
+            <a href="l3.html" class="nav-button">🌡️ Лабораторная 3</a>
+            <a href="l4.html" class="nav-button">⚗️ Лабораторная 4</a>
         </div>
     </main>
 
