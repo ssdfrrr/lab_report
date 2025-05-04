@@ -1,0 +1,165 @@
+/* Основные цвета */
+:root {
+  --teal: #2B9EB3;       /* Чирок */
+  --sunshine: #FFD166;   /* Солнечный */
+  --apricot: #FF9B71;    /* Абрикосовый */
+  --brown: #8C5E3D;      /* Коричневый */
+  --light: #F7F7F2;      /* Светлый фон */
+  --dark: #333333;       /* Тёмный текст */
+}
+
+/* Базовые стили */
+body {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+/* Шапка */
+header {
+  background: linear-gradient(135deg, var(--teal), #1E7A8C);
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+header h2 {
+  margin: 0.5rem 0 0;
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Основное содержимое */
+main {
+  flex: 1;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Навигационные кнопки */
+.nav-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.nav-button {
+  background: white;
+  color: var(--teal);
+  text-decoration: none;
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--teal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+}
+
+.nav-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  background: var(--teal);
+  color: white;
+}
+
+/* Подвал */
+footer {
+  background: var(--brown);
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.nav-button {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.nav-button:nth-child(1) { animation-delay: 0.1s; }
+.nav-button:nth-child(2) { animation-delay: 0.2s; }
+.nav-button:nth-child(3) { animation-delay: 0.3s; }
+.nav-button:nth-child(4) { animation-delay: 0.4s; }
+.nav-button:nth-child(5) { animation-delay: 0.5s; }
+.nav-button:nth-child(6) { animation-delay: 0.6s; }
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .nav-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Дополнительные элементы для контента страниц */
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+h2, h3 {
+  color: var(--teal);
+}
+
+a {
+  color: var(--apricot);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  color: var(--sunshine);
+  text-decoration: underline;
+}
+
+/* Специальные акценты */
+.highlight {
+  background-color: var(--sunshine);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+.warning {
+  background-color: var(--apricot);
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+}
